@@ -8,10 +8,7 @@ if ( ! function_exists( 'wpt_setup' ) ):
 	}
 endif;
 
-
 /* Подключаем файл wp_bootstrap_navwalker.php в тему */
 require_once('wp_bootstrap_navwalker.php');
-
-
 
 ?>
