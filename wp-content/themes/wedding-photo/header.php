@@ -11,7 +11,7 @@
 	<!-- Custom css -->
 	<link href="https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="<?php bloginfo('css/styles.css'); ?>">
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/0a05054cbd.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
