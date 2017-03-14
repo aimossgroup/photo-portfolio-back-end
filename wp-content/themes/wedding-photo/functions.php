@@ -11,4 +11,12 @@ endif;
 /* Подключаем файл wp_bootstrap_navwalker.php в тему */
 require_once('wp_bootstrap_navwalker.php');
 
+
+	add_filter( 'wp_nav_menu_items', 'your_custom_menu_item', 10, 2 );
+function your_custom_menu_item ( $items, $args ) {
+        $items .= '<li>Show whatever</li>';
+
+    return $items;
+}
+
 ?>

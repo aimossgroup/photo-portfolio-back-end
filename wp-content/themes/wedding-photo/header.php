@@ -37,16 +37,14 @@
 				</button>
 				<a class="navbar-brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
 	    	</div>
-
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<?php /* Primary navigation */
 					wp_nav_menu( array(
 						'menu' => 'top_menu',
-						'depth' => 2,
+						'depth' => 0,
 						'container' => false,
 						'menu_class' => 'nav navbar-nav',
-						//Process nav menu using our custom nav walker
 						'walker' => new wp_bootstrap_navwalker())
 					);
 				 ?>
