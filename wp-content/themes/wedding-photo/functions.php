@@ -8,7 +8,7 @@ if ( ! function_exists( 'wpt_setup' ) ):
 	}
 endif;
 
-/* Подключаем файл wp_bootstrap_navwalker.php в тему */
+/* Подключаем файл wp_bootstrap_navwalker.php в тему для подключения меню бутстрапа к WordPress*/
 require_once('wp_bootstrap_navwalker.php');
 
 /* Добавляем иконки соц.сетей после генерации меню */
