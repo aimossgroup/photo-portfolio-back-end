@@ -25,4 +25,21 @@ function social_icons_add ( $items, $args ) {
 	return $items;
 }
 
+// регистрируем стили
+add_action( 'wp_enqueue_scripts', 'register_my_theme_styles' );
+
+// регистрируем файл стилей и добавляем его в очередь
+function register_my_theme_styles() {
+	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/css/styles.css' );
+	wp_enqueue_style( 'my-theme-styles' );
+}
+// регистрируем скрипты
+add_action( 'wp_enqueue_scripts', 'register_my_theme_scripts' );
+
+// регистрируем файл скриптов и добавляем его в очередь
+function register_my_theme_scripts() {
+	wp_register_script( 'my-theme-scripts', get_template_directory_uri() . '/js/styles.js' );
+	wp_enqueue_script( 'my-theme-scripts' );    
+}
+
 ?>
