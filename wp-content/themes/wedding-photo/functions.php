@@ -19,6 +19,15 @@ remove_action( 'wp_head', 'wp_generator' );
 // регистрируем и подключаем стили bootstrap.min.css
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ); } );
 
+// регистрируем и подключаем стили шрифтов Сormorant+Infant
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ); } );
+
+// регистрируем и подключаем стили шрифтов Poiret+One
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
+
+
+
+
 // регистрируем стили	
 add_action( 'wp_enqueue_scripts', 'register_my_theme_styles' );
 
