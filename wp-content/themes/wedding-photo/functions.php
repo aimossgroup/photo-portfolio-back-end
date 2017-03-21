@@ -17,13 +17,19 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 remove_action( 'wp_head', 'wp_generator' );
 
 // регистрируем и подключаем стили bootstrap.min.css
-add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ); } );
+add_action( 'wp_enqueue_scripts', wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ) );
 
 // регистрируем и подключаем стили шрифтов Сormorant+Infant
-add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ); } );
+add_action( 'wp_enqueue_scripts', wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ) );
 
 // регистрируем и подключаем стили шрифтов Poiret+One
-add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
+add_action( 'wp_enqueue_scripts', wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ) );
+
+// регистрируем и подключаем скрипты
+add_action( 'wp_enqueue_scripts', wp_enqueue_script( 'jquery' ) );
+
+
+
 
 
 
