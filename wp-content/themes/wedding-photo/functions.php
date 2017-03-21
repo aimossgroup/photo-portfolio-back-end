@@ -1,6 +1,6 @@
 <?php
 
-// Очищаем wp_head();
+// очищаем wp_head();
 function remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );  
@@ -17,16 +17,19 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 remove_action( 'wp_head', 'wp_generator' );
 
 // регистрируем и подключаем стили bootstrap.min.css
-add_action( 'wp_enqueue_scripts', wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ) );
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ); } );
 
 // регистрируем и подключаем стили шрифтов Сormorant+Infant
-add_action( 'wp_enqueue_scripts', wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ) );
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ); } );
 
 // регистрируем и подключаем стили шрифтов Poiret+One
-add_action( 'wp_enqueue_scripts', wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ) );
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
 
-// регистрируем и подключаем скрипты
-add_action( 'wp_enqueue_scripts', wp_enqueue_script( 'jquery' ) );
+// подключаем скрипт Jquery
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'jquery' ); } );
+
+// регистрируем и подключаем скрипт Fontawesome
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/0a05054cbd.js', null, null ); } );
 
 
 
@@ -52,7 +55,7 @@ function register_my_theme_scripts() {
 	wp_enqueue_script( 'my-theme-scripts' );    
 }
 
-// Включает поддержку темой меню навигации ( в админке появляется соответствующая опция )
+// включает поддержку темой меню навигации ( в админке появляется соответствующая опция )
 add_action( 'after_setup_theme', 'wpt_setup' );
 if ( ! function_exists( 'wpt_setup' ) ):
 	function wpt_setup() {
@@ -60,10 +63,10 @@ if ( ! function_exists( 'wpt_setup' ) ):
 	}
 endif;
 
-// Подключаем файл wp_bootstrap_navwalker.php в тему для подключения меню бутстрапа к WordPress
+// подключаем файл wp_bootstrap_navwalker.php в тему для подключения меню бутстрапа к WordPress
 require_once('wp_bootstrap_navwalker.php');
 
-// Добавляем иконки соц.сетей после генерации меню 
+// добавляем иконки соц.сетей после генерации меню 
 add_filter( 'wp_nav_menu_items', 'social_icons_add', 10, 2 );
 function social_icons_add ( $items, $args ) {
         $items .= '
