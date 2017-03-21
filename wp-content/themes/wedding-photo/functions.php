@@ -5,13 +5,13 @@ function remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );  
 }
-add_action( 'widgets_init', 'remove_recent_comments_style' );  
+add_action( 'widgets_init', 'remove_recent_comments_style' );
 remove_action( 'wp_head', 'feed_links_extra', 3 ); 
 remove_action( 'wp_head', 'feed_links', 2 );
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'index_rel_link' );
-remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); 
+remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 remove_action( 'wp_head', 'wp_generator' );
@@ -34,15 +34,12 @@ add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'fontawesome', 
 
 
 
-
-
-
 // регистрируем стили	
 add_action( 'wp_enqueue_scripts', 'register_my_theme_styles' );
 
 // регистрируем файл стилей и добавляем его в очередь
 function register_my_theme_styles() {
-	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/css/style.css' );
+	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/css/styles.css' );
 	wp_enqueue_style( 'my-theme-styles' );
 }
 
