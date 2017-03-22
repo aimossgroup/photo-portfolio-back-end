@@ -25,8 +25,7 @@ add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infa
 // регистрируем и подключаем стили шрифтов Poiret+One
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
 
-// подключаем скрипт Jquery
-add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'jquery' ); } );
+
 
 // регистрируем и подключаем скрипт Fontawesome
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/0a05054cbd.js', null, null ); } );
