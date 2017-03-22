@@ -1,4 +1,8 @@
 <?php
+
+// Configuration common to all environments
+include_once __DIR__ . '/wp-config.common.php';
+
 /**
  * Основные параметры WordPress.
  *
@@ -78,6 +82,7 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', false);
 
+define('VP_ENVIRONMENT', 'verion_press_test');
 /* Это всё, дальше не редактируем. Успехов! */
 
 /** Абсолютный путь к директории WordPress. */
