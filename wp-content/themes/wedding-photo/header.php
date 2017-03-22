@@ -47,11 +47,5 @@
 	</nav>
 	<!--NAVBAR transformation on scroll ========================================== -->
 	<script>
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 200){ // Set position from top to add class
-			$('.navbar').addClass("shrink");
-			} else {
-			$('.navbar').removeClass("shrink");
-			}
-		});
+
 	</script>

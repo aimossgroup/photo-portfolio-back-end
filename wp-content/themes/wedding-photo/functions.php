@@ -25,12 +25,11 @@ add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infa
 // регистрируем и подключаем стили шрифтов Poiret+One
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
 
-
-
 // регистрируем и подключаем скрипт Fontawesome
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/0a05054cbd.js', null, null ); } );
 
-
+// регистрируем и подключаем скрипт Fontawesome
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'navbar_transformation', get_template_directory_uri() . '/js/navbar_transform.js', null, null ); } );
 
 
 // регистрируем стили	
