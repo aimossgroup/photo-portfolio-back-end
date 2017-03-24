@@ -1,5 +1,14 @@
 <?php
 
+function remove_extra_meta_boxes() {
+	remove_meta_box( 'postcustom' , 'page' , 'normal' ); // произвольные поля для страниц
+	remove_meta_box( 'commentstatusdiv' , 'page' , 'normal' ); // разрешить комментарии для страниц
+	remove_meta_box('slugdiv','page','normal'); // ярлык
+	remove_meta_box('pageparentdiv','page','side'); // родительская страница
+	remove_meta_box('authordiv','page','side'); // автор
+}
+add_action( 'admin_menu' , 'remove_extra_meta_boxes' );
+
 // Удаляем виджеты в консоли
 function remove_dashboard_widgets() {
 global $wp_meta_boxes;
@@ -13,7 +22,7 @@ global $wp_meta_boxes;
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
-// очищаем wp_head();
+// Очищаем wp_head();
 function remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
@@ -29,7 +38,7 @@ function remove_recent_comments_style() {
 }
 add_action( 'widgets_init', 'remove_recent_comments_style' );
 
-// скрываем неиспользуемые пункты и подпункты меню в админке
+// Скрываем неиспользуемые пункты и подпункты меню в админке
 function remove_menus_and_submenu_items(){
 	remove_menu_page( 'index.php' );                                              // Консоль
 	remove_menu_page( 'edit-comments.php' );                                        // Комментарии
@@ -48,45 +57,45 @@ function remove_menus_and_submenu_items(){
 }
 add_action( 'admin_menu', 'remove_menus_and_submenu_items' );
 
-// удаляем уведомления о необходимости обновить WordPress
+// Удаляем уведомления о необходимости обновить WordPress
 add_filter('pre_site_transient_update_core',create_function('$a', "return null;"));
 wp_clear_scheduled_hook('wp_version_check');
 
-// регистрируем и подключаем стили bootstrap.min.css
+// Регистрируем и подключаем стили bootstrap.min.css
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ); } );
 
-// регистрируем и подключаем стили шрифтов Сormorant+Infant
+// Регистрируем и подключаем стили шрифтов Сormorant+Infant
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ); } );
 
-// регистрируем и подключаем стили шрифтов Poiret+One
+// Регистрируем и подключаем стили шрифтов Poiret+One
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
 
-// регистрируем и подключаем скрипт Fontawesome
+// Регистрируем и подключаем скрипт Fontawesome
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/0a05054cbd.js', null, null ); } );
 
-// регистрируем и подключаем скрипт Fontawesome
+// Регистрируем и подключаем скрипт Fontawesome
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'navbar_transformation', get_template_directory_uri() . '/js/navbar_transform.js', null, null ); } );
 
 
-// регистрируем стили	
+// Регистрируем стили
 add_action( 'wp_enqueue_scripts', 'register_my_theme_styles' );
 
-// регистрируем файл стилей и добавляем его в очередь
+// Регистрируем файл стилей и добавляем его в очередь
 function register_my_theme_styles() {
 	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'my-theme-styles' );
 }
 
-// регистрируем скрипты
+// Регистрируем скрипты
 add_action( 'wp_enqueue_scripts', 'register_my_theme_scripts' );
 
-// регистрируем файл скриптов и добавляем его в очередь
+// Регистрируем файл скриптов и добавляем его в очередь
 function register_my_theme_scripts() {
 	wp_register_script( 'my-theme-scripts', get_template_directory_uri() . '/js/styles.js' );
 	wp_enqueue_script( 'my-theme-scripts' );    
 }
 
-// включает поддержку темой меню навигации ( в админке появляется соответствующая опция )
+// Включает поддержку темой меню навигации ( в админке появляется соответствующая опция )
 add_action( 'after_setup_theme', 'wpt_setup' );
 if ( ! function_exists( 'wpt_setup' ) ):
 	function wpt_setup() {
@@ -94,10 +103,10 @@ if ( ! function_exists( 'wpt_setup' ) ):
 	}
 endif;
 
-// подключаем файл wp_bootstrap_navwalker.php в тему для подключения меню бутстрапа к WordPress
+// Подключаем файл wp_bootstrap_navwalker.php в тему для подключения меню бутстрапа к WordPress
 require_once('wp_bootstrap_navwalker.php');
 
-// добавляем иконки соц.сетей после генерации меню 
+// Добавляем иконки соц.сетей после генерации меню 
 add_filter( 'wp_nav_menu_items', 'social_icons_add', 10, 2 );
 function social_icons_add ( $items, $args ) {
 	$items .= '
@@ -110,7 +119,5 @@ function social_icons_add ( $items, $args ) {
 		</li>';
 	return $items;
 }
-
-
 
 ?>
