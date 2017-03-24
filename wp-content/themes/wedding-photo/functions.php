@@ -1,4 +1,21 @@
 <?php
+//полное скрытие верхней панели от всех start 
+function hide_toolbar() {
+?>
+<style type="text/css">
+    .show-admin-bar {
+        display: none;
+    }
+</style>
+<?php
+}
+function wph_disable_toolbar() {
+    add_filter('show_admin_bar', '__return_false');
+    add_action('admin_print_scripts-profile.php', 'hide_toolbar');
+}
+add_action('init', 'wph_disable_toolbar', 9);
+add_filter('show_admin_bar', '__return_false');
+
 
 // Убираем большинство мета-боксов на странице редактирования страниц
 function remove_extra_meta_boxes() {
