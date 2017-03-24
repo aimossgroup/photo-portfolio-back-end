@@ -1,5 +1,6 @@
 <?php
 
+// Убираем большинство мета-боксов на странице редактирования страниц
 function remove_extra_meta_boxes() {
 	remove_meta_box( 'postcustom' , 'page' , 'normal' ); // произвольные поля для страниц
 	remove_meta_box( 'commentstatusdiv' , 'page' , 'normal' ); // разрешить комментарии для страниц
