@@ -16,6 +16,27 @@ remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 remove_action( 'wp_head', 'wp_generator' );
 
+// скрываем неиспользуемые пункты и подпункты меню в админке
+function remove_menus_and_submenu_items(){
+remove_menu_page( 'index.php' );                                                // Консоль
+remove_menu_page( 'edit-comments.php' );                                        // Комментарии
+remove_menu_page( 'edit.php' );                                                 // Записи
+
+remove_submenu_page( 'plugins.php', 'plugin-editor.php' );                      // Плагины/Редактор
+remove_submenu_page('users.php', 'users.php' );                                 // Пользователи/Все пользователи
+remove_submenu_page('users.php', 'user-new.php' );                              // Пользователи/Добавить нового
+remove_submenu_page('users.php', 'profile.php' );                               // Пользователи/Ваш профиль
+remove_menu_page( 'tools.php' );                                                // Инструменты
+remove_submenu_page( 'options-general.php', 'options-general.php' );            // Настройки/Общие
+remove_submenu_page( 'options-general.php', 'options-writing.php' );            // Настройки/Написание
+remove_submenu_page( 'options-general.php', 'options-reading.php' );            // Настройки/Чтение
+remove_submenu_page( 'options-general.php', 'options-discussion.php' );         // Настройки/Обсуждение
+remove_submenu_page( 'options-general.php', 'options-media.php' );              // Настройки/Медиафайлы
+remove_submenu_page( 'options-general.php', 'options-permalink.php' );          // Настройки/Постоянные ссылки
+
+}
+add_action( 'admin_menu', 'remove_menus_and_submenu_items' );
+
 // удаляем уведомления о необходимости обновить WordPress
 add_filter('pre_site_transient_update_core',create_function('$a', "return null;"));
 wp_clear_scheduled_hook('wp_version_check');
