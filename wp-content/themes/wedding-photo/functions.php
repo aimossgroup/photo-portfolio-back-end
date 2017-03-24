@@ -1,5 +1,18 @@
 <?php
 
+// Удаляем виджеты в консоли
+function remove_dashboard_widgets() {
+global $wp_meta_boxes;
+	unset($wp_meta_boxes['dashboard']['normal']['core']['bbp-dashboard-right-now']);
+// Вручную указываем - какие виджеты удалять
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);      // "Активность"
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);     // "Быстрый черновик"
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);         // "Новости WordPress"
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);     // "На виду"
+	remove_action('welcome_panel', 'wp_welcome_panel');                              // "Добро пожаловать"
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+
 // очищаем wp_head();
 function remove_recent_comments_style() {
 	global $wp_widget_factory;
@@ -18,7 +31,7 @@ add_action( 'widgets_init', 'remove_recent_comments_style' );
 
 // скрываем неиспользуемые пункты и подпункты меню в админке
 function remove_menus_and_submenu_items(){
-	remove_menu_page( 'index.php' );                                                // Консоль
+	remove_menu_page( 'index.php' );                                              // Консоль
 	remove_menu_page( 'edit-comments.php' );                                        // Комментарии
 	remove_menu_page( 'edit.php' );                                                 // Записи
 	remove_submenu_page( 'plugins.php', 'plugin-editor.php' );                      // Плагины/Редактор
