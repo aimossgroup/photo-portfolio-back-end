@@ -3,37 +3,35 @@
 // очищаем wp_head();
 function remove_recent_comments_style() {
 	global $wp_widget_factory;
-	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );  
+	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+	remove_action( 'wp_head', 'feed_links_extra', 3 ); 
+	remove_action( 'wp_head', 'feed_links', 2 );
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'index_rel_link' );
+	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'wp_generator' );
 }
 add_action( 'widgets_init', 'remove_recent_comments_style' );
-remove_action( 'wp_head', 'feed_links_extra', 3 ); 
-remove_action( 'wp_head', 'feed_links', 2 );
-remove_action( 'wp_head', 'rsd_link' );
-remove_action( 'wp_head', 'wlwmanifest_link' );
-remove_action( 'wp_head', 'index_rel_link' );
-remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
-remove_action( 'wp_head', 'wp_generator' );
 
 // скрываем неиспользуемые пункты и подпункты меню в админке
 function remove_menus_and_submenu_items(){
-remove_menu_page( 'index.php' );                                                // Консоль
-remove_menu_page( 'edit-comments.php' );                                        // Комментарии
-remove_menu_page( 'edit.php' );                                                 // Записи
-
-remove_submenu_page( 'plugins.php', 'plugin-editor.php' );                      // Плагины/Редактор
-remove_submenu_page('users.php', 'users.php' );                                 // Пользователи/Все пользователи
-remove_submenu_page('users.php', 'user-new.php' );                              // Пользователи/Добавить нового
-remove_submenu_page('users.php', 'profile.php' );                               // Пользователи/Ваш профиль
-remove_menu_page( 'tools.php' );                                                // Инструменты
-remove_submenu_page( 'options-general.php', 'options-general.php' );            // Настройки/Общие
-remove_submenu_page( 'options-general.php', 'options-writing.php' );            // Настройки/Написание
-remove_submenu_page( 'options-general.php', 'options-reading.php' );            // Настройки/Чтение
-remove_submenu_page( 'options-general.php', 'options-discussion.php' );         // Настройки/Обсуждение
-remove_submenu_page( 'options-general.php', 'options-media.php' );              // Настройки/Медиафайлы
-remove_submenu_page( 'options-general.php', 'options-permalink.php' );          // Настройки/Постоянные ссылки
-
+	remove_menu_page( 'index.php' );                                                // Консоль
+	remove_menu_page( 'edit-comments.php' );                                        // Комментарии
+	remove_menu_page( 'edit.php' );                                                 // Записи
+	remove_submenu_page( 'plugins.php', 'plugin-editor.php' );                      // Плагины/Редактор
+	remove_submenu_page('users.php', 'users.php' );                                 // Пользователи/Все пользователи
+	remove_submenu_page('users.php', 'user-new.php' );                              // Пользователи/Добавить нового
+	remove_submenu_page('users.php', 'profile.php' );                               // Пользователи/Ваш профиль
+	remove_menu_page( 'tools.php' );                                                // Инструменты
+	remove_submenu_page( 'options-general.php', 'options-general.php' );            // Настройки/Общие
+	remove_submenu_page( 'options-general.php', 'options-writing.php' );            // Настройки/Написание
+	remove_submenu_page( 'options-general.php', 'options-reading.php' );            // Настройки/Чтение
+	remove_submenu_page( 'options-general.php', 'options-discussion.php' );         // Настройки/Обсуждение
+	remove_submenu_page( 'options-general.php', 'options-media.php' );              // Настройки/Медиафайлы
+	remove_submenu_page( 'options-general.php', 'options-permalink.php' );          // Настройки/Постоянные ссылки
 }
 add_action( 'admin_menu', 'remove_menus_and_submenu_items' );
 
@@ -89,7 +87,7 @@ require_once('wp_bootstrap_navwalker.php');
 // добавляем иконки соц.сетей после генерации меню 
 add_filter( 'wp_nav_menu_items', 'social_icons_add', 10, 2 );
 function social_icons_add ( $items, $args ) {
-        $items .= '
+	$items .= '
 		<li>
 			<ul class="social_nav">
 				<li><a href=""><i class="fa fa-skype"></i></a></li>
