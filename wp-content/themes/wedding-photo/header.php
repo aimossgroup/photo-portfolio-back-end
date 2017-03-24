@@ -7,7 +7,6 @@
 	<meta name="author" content="">
 	<title><?php bloginfo('Фотограф в Липецке - Александр'); ?></title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

@@ -37,7 +37,7 @@ add_action( 'wp_enqueue_scripts', 'register_my_theme_styles' );
 
 // регистрируем файл стилей и добавляем его в очередь
 function register_my_theme_styles() {
-	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/css/styles.css' );
+	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'my-theme-styles' );
 }
 
