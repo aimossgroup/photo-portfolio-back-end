@@ -16,6 +16,10 @@ remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 remove_action( 'wp_head', 'wp_generator' );
 
+// удаляем уведомления о необходимости обновить WordPress
+add_filter('pre_site_transient_update_core',create_function('$a', "return null;"));
+wp_clear_scheduled_hook('wp_version_check');
+
 // регистрируем и подключаем стили bootstrap.min.css
 add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ); } );
 
