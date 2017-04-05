@@ -68,7 +68,7 @@ function remove_menus_and_submenu_items(){
 	remove_menu_page( 'tools.php' );                                                // Инструменты
 	remove_submenu_page( 'options-general.php', 'options-general.php' );            // Настройки/Общие
 	remove_submenu_page( 'options-general.php', 'options-writing.php' );            // Настройки/Написание
-	remove_submenu_page( 'options-general.php', 'options-reading.php' );            // Настройки/Чтение
+	// remove_submenu_page( 'options-general.php', 'options-reading.php' );            // Настройки/Чтение
 	remove_submenu_page( 'options-general.php', 'options-discussion.php' );         // Настройки/Обсуждение
 	remove_submenu_page( 'options-general.php', 'options-media.php' );              // Настройки/Медиафайлы
 	remove_submenu_page( 'options-general.php', 'options-permalink.php' );          // Настройки/Постоянные ссылки
