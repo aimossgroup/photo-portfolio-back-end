@@ -15,9 +15,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="keywords" content="свадебный,фотограф,семейное фото, липецк,липецкая область,фотокнига,видеосъемка">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php bloginfo('description'); ?>">
-    <meta name="author" content="Aimoss">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="<?php bloginfo('description'); ?>">
+	<meta name="author" content="Aimoss">
 	<title><?php bloginfo('name'); ?> - <?php the_title(); ?></title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -25,14 +25,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic" rel="stylesheet">
 	<link href="https://file.myfontastic.com/xKMz3zpWFsBMUrsHAXm7CZ/icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/styles.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/styles.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/0a05054cbd.js"></script>
-    <!-- HTML5 shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<script src="https://use.fontawesome.com/0a05054cbd.js"></script>
+	<!-- HTML5 shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
 	<!-- NAV BAR 
@@ -48,7 +48,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/">Александр Волков</a>
-	    	</div>
+			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
