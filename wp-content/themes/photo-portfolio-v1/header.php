@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+	<?php wp_head(); ?> 
 	<meta charset="UTF-8">
 	<meta name="keywords" content="свадебный,фотограф,семейное фото, липецк,липецкая область,фотокнига,видеосъемка">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +34,7 @@
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	
 </head>
 <body>
 	<!-- NAV BAR 
@@ -53,7 +55,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- Код ниже ставиться на место соответствующего кода bootstrap -->
-				<?php /* Primary navigation */
+				<?php /* Primary navigation */	
 					wp_nav_menu( array(
 						'menu' => 'top_menu',
 						'depth' => 0,

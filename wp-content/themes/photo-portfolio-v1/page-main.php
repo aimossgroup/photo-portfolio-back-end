@@ -54,21 +54,24 @@
 <!-- ACCENT MENU
 ======================================================== -->
 <section class="accent-menu container">
+	<div class="row">
 	<?php if(have_rows('icons_block')) : ?>
 		<?php while(have_rows('icons_block')) : ?>
-			<?php the_row(); ?>
-			<a href="" class="accent-menu-item icon-camera-1">
+		<?php the_row(); ?>
+			<a href="" class="col-lg-4 col-md-4 col-sm-4 accent-menu-item icon-camera-1">
 				<?php echo get_sub_field('icon_text_left'); ?>
 			</a>
-			<a href="" class="accent-menu-item icon-camera-streamline-video">
+			<a href="" class="col-lg-4 col-md-4 col-sm-4 accent-menu-item icon-device-camera-video">
 				<?php echo get_sub_field('icon_text_center'); ?>
 			</a>
-			<a href="" class="accent-menu-item icon-camera-1">
+			<a href="" class="col-lg-4 col-md-4 col-sm-4 accent-menu-item icon-book-1">
 				<?php echo get_sub_field('icon_text_right'); ?>
 			</a>
 		<?php endwhile; ?>
 	<?php endif; ?>
+	</div>
 </section>
+
 
 <!-- ABOUT 
 ===========================================================-->
@@ -85,5 +88,37 @@
 	</div>
 </section>
 
+
+<!-- PORTFOLIO 
+==========================================================-->
+<section class="container portfolio">
+	<h2  class="portfolio__h2 h_divider">Портфолио</h2>
+	<div class="row">
+		<div class="portfolio__block col-lg-6 col-md-6 col-sm-6">
+			<img class="portfolio__img" src="<?php bloginfo('template_directory'); ?>/img/ph-1.jpg" alt="...">
+			<div class="portfolio__description">
+				<a class="button portfolio__button" href="portfolio.html">Свадьба</a>
+			</div>
+		</div>
+		<div class="portfolio__block col-lg-6 col-md-6 col-sm-6">
+			<img class="portfolio__img" src="<?php bloginfo('template_directory'); ?>/img/ph-2.jpg" alt="...">
+			<div class="portfolio__description">
+				<a class="button portfolio__button" href="portfolio.html">Love Story</a>
+			</div>
+		</div>
+		<div class="portfolio__block col-lg-6 col-md-6 col-sm-6">
+			<img class="portfolio__img" src="<?php bloginfo('template_directory'); ?>/img/ph-3.jpg" alt="...">
+			<div class="portfolio__description">
+				<a class="button portfolio__button" href="portfolio.html">Церемонии</a>
+			</div>
+		</div>
+		<div class="portfolio__block col-lg-6 col-md-6 col-sm-6">
+			<img class="portfolio__img" src="<?php bloginfo('template_directory'); ?>/img/ph-4.jpg" alt="...">
+			<div class="portfolio__description">
+				<a class="button portfolio__button" href="portfolio.html">Мероприятия</a>
+			</div>
+		</div>
+	</div>
+</section>
 
 <?php get_footer(); ?>
