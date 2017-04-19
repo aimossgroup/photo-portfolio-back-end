@@ -47,22 +47,7 @@ function photo_portfolio_v1_setup() {
 		'menu-1' => esc_html__( 'Primary', 'photo-portfolio-v1' ),
 	) );
 
-	// Подключаем файл wp_bootstrap_navwalker.php в тему для подключения меню бутстрапа к WordPress
-		require_once('wp_bootstrap_navwalker.php');
 
-// Добавляем иконки соц.сетей после генерации меню 
-add_filter( 'wp_nav_menu_items', 'social_icons_add', 10, 2 );
-function social_icons_add ( $items, $args ) {
-	$items .= '
-		<li>
-			<ul class="social_nav">
-				<li><a href=""><i class="fa fa-skype"></i></a></li>
-				<li><a href="http://vk.com" target="_blank"><i class="fa fa-vk"></i></a></li>
-				<li><a href=""><i class="fa fa-whatsapp"></i></a></li>
-			</ul>
-		</li>';
-	return $items;
-}
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -138,8 +123,6 @@ function hide_editor() {
 }
 
 
-
-
 /**
  * Enqueue scripts and styles.
  */
@@ -180,4 +163,118 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+require_once('wp_bootstrap_navwalker.php');
+
+add_filter( 'wp_nav_menu_items', 'social_icons_add', 10, 2 );
+function social_icons_add ( $items, $args ) {
+	$items .= '
+		<li>
+			<ul class="social_nav">
+				<li><a href=""><i class="fa fa-skype"></i></a></li>
+				<li><a href="http://vk.com" target="_blank"><i class="fa fa-vk"></i></a></li>
+				<li><a href=""><i class="fa fa-whatsapp"></i></a></li>
+			</ul>
+		</li>';
+	return $items;
+}
+
+function hide_toolbar() {
+?>
+<style type="text/css">
+    .show-admin-bar {
+        display: none;
+    }
+</style>
+<?php
+}
+function wph_disable_toolbar() {
+    add_filter('show_admin_bar', '__return_false');
+    add_action('admin_print_scripts-profile.php', 'hide_toolbar');
+}
+add_action('init', 'wph_disable_toolbar', 9);
+add_filter('show_admin_bar', '__return_false');
+
+
+function remove_dashboard_widgets() {
+global $wp_meta_boxes;
+	unset($wp_meta_boxes['dashboard']['normal']['core']['bbp-dashboard-right-now']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+	remove_action('welcome_panel', 'wp_welcome_panel');
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+function remove_extra_meta_boxes() {
+	remove_meta_box( 'postcustom' , 'post' , 'normal' );
+	remove_meta_box( 'postcustom' , 'page' , 'normal' );
+	remove_meta_box( 'postexcerpt' , 'post' , 'normal' );
+	remove_meta_box( 'postexcerpt' , 'page' , 'normal' );
+	remove_meta_box( 'commentsdiv' , 'post' , 'normal' );
+	remove_meta_box( 'commentsdiv' , 'page' , 'normal' );
+	remove_meta_box( 'tagsdiv-post_tag' , 'post' , 'side' );
+	remove_meta_box( 'tagsdiv-post_tag' , 'page' , 'side' );
+	remove_meta_box( 'trackbacksdiv' , 'post' , 'normal' );
+	remove_meta_box( 'trackbacksdiv' , 'page' , 'normal' );
+	remove_meta_box( 'commentstatusdiv' , 'post' , 'normal' );
+	remove_meta_box( 'commentstatusdiv' , 'page' , 'normal' );
+	remove_meta_box('slugdiv','post','normal');
+	remove_meta_box('slugdiv','page','normal');
+	remove_meta_box('authordiv','page','side');
+}
+add_action( 'admin_menu' , 'remove_extra_meta_boxes' );
+
+add_filter('pre_site_transient_update_core',create_function('$a', "return null;"));
+wp_clear_scheduled_hook('wp_version_check');
+
+function remove_recent_comments_style() {
+	global $wp_widget_factory;
+	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+	remove_action( 'wp_head', 'feed_links_extra', 3 ); 
+	remove_action( 'wp_head', 'feed_links', 2 );
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'index_rel_link' );
+	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'wp_generator' );
+}
+add_action( 'widgets_init', 'remove_recent_comments_style' );
+
+// Регистрируем и подключаем стили bootstrap.min.css
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'bootstrap_styles', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', null, null ); } );
+
+
+// Регистрируем стили
+add_action( 'wp_enqueue_scripts', 'register_my_theme_styles' );
+
+// Регистрируем файл стилей и добавляем его в очередь
+function register_my_theme_styles() {
+	wp_register_style( 'my-theme-styles', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'my-theme-styles' );
+}
+
+// Регистрируем и подключаем стили шрифтов Сormorant+Infant
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'сormorant+infant', 'https://fonts.googleapis.com/css?family=Cormorant+Infant:400,400i&amp;subset=cyrillic', null, null ); } );
+
+// Регистрируем и подключаем стили шрифтов Poiret+One
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'poiret+one', 'https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic', null, null ); } );
+
+// Регистрируем и подключаем стили иконок Fontastic
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_style( 'fontastic_styles', 'https://file.myfontastic.com/xKMz3zpWFsBMUrsHAXm7CZ/icons.css', null, null ); } );
+
+// Регистрируем и подключаем скрипт Fontawesome
+add_action( 'wp_enqueue_scripts', function(){ wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/0a05054cbd.js', null, null ); } );
+
+/* Подключение jQuery*/
+function jquery_init() { wp_enqueue_script('jquery'); }
+add_action('wp_enqueue_scripts', 'jquery_init');
+
+
+
+
+
 
