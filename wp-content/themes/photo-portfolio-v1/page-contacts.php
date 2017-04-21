@@ -7,8 +7,7 @@
 			<div class="row">
 				<section class="col-lg-6 col-md-6 col-sm-6 contacts_form">
 					<h2 class="header_h2 h_divider">Напишите мне</h2>
-						<?php the_post(); ?>
-						<?php the_content(); ?>
+						<?php echo do_shortcode( '[contact-form-7 id="102" title="Contact"]' ); ?>
 				</section>
 				<address class="col-lg-6 col-md-6 col-sm-6 contacts_list">
 					<h2 class="header_h2 h_divider">Другие способы со мной связаться:</h2>
