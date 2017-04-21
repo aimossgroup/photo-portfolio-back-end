@@ -111,13 +111,13 @@ function hide_editor() {
   if( !isset( $post_id ) ) return;
   // Hide the editor on the page titled 'Homepage'
   $homepgname = get_the_title($post_id);
-  if($homepgname == 'Главная'){ 
+  if($homepgname == 'Главная' || $homepgname == 'Услуги и цены'){ 
     remove_post_type_support('page', 'editor');
   }
   // Hide the editor on a page with a specific page template
   // Get the name of the Page Template file.
   $template_file = get_post_meta($post_id, '_wp_page_template', true);
-  if($template_file == 'page-main.php'){ // the filename of the page template
+  if($template_file == 'page-main.php' || $template_file == 'page-prices.php'){ // the filename of the page template
     remove_post_type_support('page', 'editor');
   }
 }
