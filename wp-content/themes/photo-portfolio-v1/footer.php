@@ -1,16 +1,5 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package photo-portfolio-v1
- */
 
-?>
-<!-- FOOTER 
+	<!-- FOOTER 
 	==========================================================-->
 	<footer class="page_footer">
 		<div class="container">
@@ -30,9 +19,6 @@
 			</div>
 		</div>
 	</footer>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<!-- Bootsrap Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- BACK TO TOP BUTTON
 	============================================================= -->
 	<a href="#" class="back-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
@@ -51,8 +37,9 @@
 			return false;
 		});
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- Bootsrap Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <?php wp_footer(); ?>
-
 </body>
 </html>
-

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package photo-portfolio-v1
+ * @package phot
  */
 
 get_header(); ?>

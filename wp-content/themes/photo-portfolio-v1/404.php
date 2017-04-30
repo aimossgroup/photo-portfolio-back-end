@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package photo-portfolio-v1
+ * @package phot
  */
 
 get_header(); ?>
@@ -14,11 +14,11 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'photo-portfolio-v1' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'phot' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'photo-portfolio-v1' ); ?></p>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'phot' ); ?></p>
 
 					<?php
 						get_search_form();
@@ -26,11 +26,11 @@ get_header(); ?>
 						the_widget( 'WP_Widget_Recent_Posts' );
 
 						// Only show the widget if site has multiple categories.
-						if ( photo_portfolio_v1_categorized_blog() ) :
+						if ( phot_categorized_blog() ) :
 					?>
 
 					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'photo-portfolio-v1' ); ?></h2>
+						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'phot' ); ?></h2>
 						<ul>
 						<?php
 							wp_list_categories( array(
@@ -48,7 +48,7 @@ get_header(); ?>
 						endif;
 
 						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'photo-portfolio-v1' ), convert_smilies( ':)' ) ) . '</p>';
+						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'phot' ), convert_smilies( ':)' ) ) . '</p>';
 						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 
 						the_widget( 'WP_Widget_Tag_Cloud' );
